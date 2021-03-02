@@ -1,17 +1,19 @@
-import {oak,fs} from '../deps.ts'
+import {oak, fs} from '../deps.ts'
 import {bundleIndex} from "../build/bundle.ts";
 
 const bundleOutput = 'build/run/static/js/main.js'
 
 export async function run(options: { port: number, watch: boolean }) {
-  if(!await fs.exists('index.tsx')){
+  if (!await fs.exists('index.tsx')) {
     console.error(`there is no 'index.tsx', it's not created by deno-create-react-app`)
     return null
   }
-  if(!await bundleIndex(bundleOutput)){
+  console.log("bundling 'index.tsx'");
+  if (!await bundleIndex(bundleOutput)) {
     console.error(`fail to bundle 'index.tsx', exit`)
     return null
   }
+  console.log('bundle succeed')
   if (options.watch) {
     watch()
   }
@@ -19,8 +21,20 @@ export async function run(options: { port: number, watch: boolean }) {
 }
 
 export async function watch() {
-  for await (const event of Deno.watchFs('.')){
-    console.log(event)
+  let handler = undefined
+  for await (const event of Deno.watchFs('.')) {
+    if (["create", "modify", "remove"].some(s => s == event.kind) &&
+      event.paths.some((p: string) => p.endsWith('tsx') || p.endsWith('ts'))) {
+      clearTimeout(handler)
+      handler = setTimeout(async () => {
+        console.log('file changed, re-bundling...')
+        if (await bundleIndex(bundleOutput)) {
+          console.log('bundle succeed')
+        } else {
+          console.error(`fail to bundle 'index.tsx', exit`)
+        }
+      }, 500)
+    }
   }
 }
 
