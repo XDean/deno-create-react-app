@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ]
   }
 }

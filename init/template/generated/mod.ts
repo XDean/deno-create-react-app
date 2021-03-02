@@ -5,7 +5,7 @@ import index_tsx from './index.tsx.static.ts'
 import static_css_App_css from './static/css/App.css.static.ts'
 import static_css_index_css from './static/css/index.css.static.ts'
 import static_favicon_ico from './static/favicon.ico.static.ts'
-import static_logo_svg from './static/logo.svg.static.ts'
+import static_images_logo_svg from './static/images/logo.svg.static.ts'
 import tsconfig_json from './tsconfig.json.static.ts'
 
 export default [
@@ -38,8 +38,8 @@ export default [
     content: static_favicon_ico
   },
   {
-    path:'static/logo.svg',
-    content: static_logo_svg
+    path:'static/images/logo.svg',
+    content: static_images_logo_svg
   },
   {
     path:'tsconfig.json',
