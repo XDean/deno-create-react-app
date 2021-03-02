@@ -1,4 +1,4 @@
-import deps_ts from './resources/deps.ts.static.ts'
+import deps_ts from './deps.ts.static.ts'
 
 export default [
   {
