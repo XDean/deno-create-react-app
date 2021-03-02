@@ -1,2 +1,2 @@
 #!/bin/bash
-deno run --unstable --allow-run init/template/build.ts
+deno run --unstable --allow-run --allow-read --allow-write init/template/build.ts
