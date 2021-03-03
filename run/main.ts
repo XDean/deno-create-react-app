@@ -1,15 +1,13 @@
 import {oak, fs} from '../deps.ts'
-import {bundleIndex} from "../build/bundle.ts";
+import {bundleIndexJs} from "../build/bundle.ts";
+import {ensureProject} from "../util.ts";
 
-const bundleOutput = 'build/run/static/js/main.js'
+const bundleOutput = 'dist/run/static/js/main.js'
 
 export async function run(options: { port: number, watch: boolean }) {
-  if (!await fs.exists('index.tsx')) {
-    console.error(`there is no 'index.tsx', it's not created by deno-create-react-app`)
-    return null
-  }
+  ensureProject()
   console.log("bundling 'index.tsx'");
-  if (!await bundleIndex(bundleOutput)) {
+  if (!await bundleIndexJs(bundleOutput)) {
     console.error(`fail to bundle 'index.tsx', exit`)
     return null
   }
@@ -28,7 +26,7 @@ export async function watch() {
       clearTimeout(handler)
       handler = setTimeout(async () => {
         console.log('file changed, re-bundling...')
-        if (await bundleIndex(bundleOutput)) {
+        if (await bundleIndexJs(bundleOutput)) {
           console.log('bundle succeed')
         } else {
           console.error(`fail to bundle 'index.tsx', exit`)

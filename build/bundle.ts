@@ -1,6 +1,6 @@
 import {fs} from '../deps.ts'
 
-export async function bundleIndex(output:string) {
+export async function bundleIndexJs(output:string) {
   await fs.ensureFile(output)
   const res = await Deno.run({
     cmd: [
