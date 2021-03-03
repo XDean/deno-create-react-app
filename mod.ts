@@ -5,7 +5,7 @@ import * as build from "./build/cmd.ts";
 
 const {options} = await new cli.Command()
   .name("deno-create-react-app")
-  .version("0.1.0")
+  .version("0.1.1")
   .description("Create React App with Deno")
   .command('init', init.Command)
   .command('run', run.Command)
