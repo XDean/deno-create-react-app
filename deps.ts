@@ -5,3 +5,5 @@ export * as fs from 'https://deno.land/std@0.88.0/fs/mod.ts';
 export * as path from 'https://deno.land/std@0.88.0/path/mod.ts';
 export * as server from 'https://deno.land/std@0.88.0/http/server.ts';
 export * as datetime from 'https://deno.land/std@0.69.0/datetime/mod.ts'
+
+export { open } from "https://deno.land/x/opener/mod.ts";

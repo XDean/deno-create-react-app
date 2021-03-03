@@ -1,4 +1,4 @@
-import {oak, fs} from '../deps.ts'
+import {oak, fs, open} from '../deps.ts'
 import {bundleIndexJs} from "../build/bundle.ts";
 import {ensureProject} from "../util.ts";
 
@@ -73,6 +73,11 @@ export async function runServer(port: number) {
   app.use(router.routes());
   app.use(router.allowedMethods());
 
-  console.log(`server started at port ${port}`)
+  app.addEventListener('listen', ({hostname, port, secure}) => {
+    const url = `${secure ? "https://" : "http://"}${hostname ?? "localhost"}:${port}`
+    console.log(`Listening on: ${url}`,);
+    open(url)
+  });
+
   return app.listen({port: port});
 }
