@@ -5,7 +5,7 @@ Create React apps with Deno
 ## Quick Start
 
 ```
-deno install --allow-read --allow-write --allow-run --allow-net --unstable --name=deno-create-react-app https://deno.land/x/create_react_app/mod.ts
+deno install -A --unstable -n deno-create-react-app https://deno.land/x/create_react_app/mod.ts
 deno-create-react-app init my-app
 cd my-app
 deno-create-react-app run
@@ -16,7 +16,7 @@ deno-create-react-app run
 ### Installation
 
 ```
-deno install --allow-read --allow-write --allow-run --allow-net --unstable --name=deno-create-react-app https://deno.land/x/create_react_app/mod.ts
+deno install -A --unstable -n deno-create-react-app https://deno.land/x/create_react_app/mod.ts
 ```
 
 command `deno-create-react-app` will install on your desktop
