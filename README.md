@@ -1,6 +1,8 @@
 # Deno Create React App
 
-Create React apps with Deno
+Create React apps with Deno.
+
+**Note: This is a toy. You can play with it. But I'm afraid I can't give much support.**
 
 ## Quick Start
 
